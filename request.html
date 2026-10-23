@@ -4,6 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Նախագծային կայք</title>
+</head>
+    <style>
+        
+.feedback {
+    max-width: 750px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(8, 35, 76, 0.92);
+    border: 1px solid #36cfff;
+    border-radius: 20px;
+    box-shadow: 0 10px 35px #0005;
+}
+
+.feedback h2 {
+    color: #36cfff;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.feedback p {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #e1ebff;
+}
+
+.feedback form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.feedback label {
+    color: white;
+    font-weight: bold;
+}
+
+.feedback input,
+.feedback textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #398bdf;
+    border-radius: 9px;
+    background: #0b2448;
+    color: white;
+    font: inherit;
+}
+
+.feedback input:focus,
+.feedback textarea:focus {
+    outline: 2px solid #36cfff;
+}
+
+.feedback button {
+    padding: 14px;
+    border: none;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #087cff, #0753d8);
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.feedback button:hover {
+    background: #36aaff;
+    transform: translateY(-2px);
+}
+
+    </style>
 <body>
     <section class="feedback" id="feedback">
         <h2>✉️ Կարծիքներ և առաջարկներ</h2>
@@ -29,7 +99,7 @@
         </form>
     </section>
 </body>
-</head>
+</html>
 
 
 
