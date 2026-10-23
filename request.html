@@ -73,9 +73,36 @@
     transform: translateY(-2px);
 }
 
+.arrow-button {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    width: 58px;
+    height: 58px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #087cff, #00c6ff);
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+    box-shadow: 0 0 20px #00a6ff88;
+    transition: 0.3s;
+}
+
+.arrow-button:hover {
+    transform: scale(1.12);
+    box-shadow: 0 0 30px #00c6ff;
+}
+
     </style>
 <body>
-    <button></button>
+    
+    <a href="html.html" class="arrow-button" title="Բացել HTML էջը">
+        ←
+    </a>
+
     <section class="feedback" id="feedback">
         <h2>✉️ Կարծիքներ և առաջարկներ</h2>
         <p>Գրիր քո կարծիքը մեր նախագծի մասին։</p>
