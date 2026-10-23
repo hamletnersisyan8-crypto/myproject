@@ -1,135 +1,287 @@
+
 <!DOCTYPE html>
 <html lang="hy">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Նախագծային կայք</title>
-</head>
+    <title>Կարծիքներ և առաջարկներ</title>
+
     <style>
-        
-.feedback {
-    max-width: 750px;
-    margin: 40px auto;
-    padding: 30px;
-    background: rgba(8, 35, 76, 0.92);
-    border: 1px solid #36cfff;
-    border-radius: 20px;
-    box-shadow: 0 10px 35px #0005;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.feedback h2 {
-    color: #36cfff;
-    text-align: center;
-    margin-bottom: 12px;
-}
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            font-family: Arial, sans-serif;
+            color: white;
+            background:
+                radial-gradient(circle at top left, #123e75 0, transparent 40%),
+                radial-gradient(circle at bottom right, #063b66 0, transparent 40%),
+                linear-gradient(135deg, #050d20, #071b38, #020817);
+            overflow-x: hidden;
+        }
 
-.feedback p {
-    text-align: center;
-    margin-bottom: 25px;
-    color: #e1ebff;
-}
+        /* Ֆոնային լուսավոր շրջաններ */
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.35;
+            pointer-events: none;
+            z-index: -1;
+        }
 
-.feedback form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
+        body::before {
+            background: #008cff;
+            top: 5%;
+            left: 5%;
+        }
 
-.feedback label {
-    color: white;
-    font-weight: bold;
-}
+        body::after {
+            background: #00d9ff;
+            bottom: 5%;
+            right: 5%;
+        }
 
-.feedback input,
-.feedback textarea {
-    width: 100%;
-    padding: 13px;
-    border: 1px solid #398bdf;
-    border-radius: 9px;
-    background: #0b2448;
-    color: white;
-    font: inherit;
-}
+        .feedback {
+            width: 100%;
+            max-width: 700px;
+            padding: 38px;
+            background: rgba(8, 25, 53, 0.88);
+            border: 1px solid rgba(54, 207, 255, 0.45);
+            border-radius: 24px;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(0, 153, 255, 0.12);
+            backdrop-filter: blur(15px);
+            animation: appear 0.8s ease;
+        }
 
-.feedback input:focus,
-.feedback textarea:focus {
-    outline: 2px solid #36cfff;
-}
+        .icon {
+            width: 75px;
+            height: 75px;
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 22px;
+            background: linear-gradient(135deg, #087cff, #00d9ff);
+            box-shadow: 0 0 30px rgba(0, 174, 255, 0.3);
+            font-size: 36px;
+        }
 
-.feedback button {
-    padding: 14px;
-    border: none;
-    border-radius: 9px;
-    background: linear-gradient(135deg, #087cff, #0753d8);
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-}
+        .feedback h1 {
+            color: #54d8ff;
+            text-align: center;
+            font-size: clamp(25px, 5vw, 34px);
+            margin-bottom: 12px;
+        }
 
-.feedback button:hover {
-    background: #36aaff;
-    transform: translateY(-2px);
-}
+        .feedback .description {
+            text-align: center;
+            color: #c5d7f2;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
 
-.arrow-button {
-    position: fixed;
-    right: 25px;
-    bottom: 25px;
-    width: 58px;
-    height: 58px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #087cff, #00c6ff);
-    color: white;
-    font-size: 30px;
-    text-decoration: none;
-    box-shadow: 0 0 20px #00a6ff88;
-    transition: 0.3s;
-}
+        .feedback form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
 
-.arrow-button:hover {
-    transform: scale(1.12);
-    box-shadow: 0 0 30px #00c6ff;
-}
+        .feedback label {
+            color: #e7f4ff;
+            font-weight: bold;
+            font-size: 14px;
+            margin-top: 5px;
+        }
 
+        .feedback input,
+        .feedback textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #294d78;
+            border-radius: 12px;
+            background: rgba(3, 15, 34, 0.85);
+            color: white;
+            font: inherit;
+            font-size: 15px;
+            transition: 0.25s;
+        }
+
+        .feedback input::placeholder,
+        .feedback textarea::placeholder {
+            color: #8198b7;
+        }
+
+        .feedback input:focus,
+        .feedback textarea:focus {
+            outline: none;
+            border-color: #36cfff;
+            box-shadow: 0 0 0 3px rgba(54, 207, 255, 0.13);
+        }
+
+        .feedback textarea {
+            resize: vertical;
+            min-height: 130px;
+        }
+
+        .feedback button {
+            margin-top: 12px;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #087cff, #00bfff);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .feedback button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 174, 255, 0.3);
+            background: linear-gradient(135deg, #1592ff, #24d2ff);
+        }
+
+        .feedback button:active {
+            transform: scale(0.98);
+        }
+
+        .note {
+            margin-top: 20px;
+            text-align: center;
+            color: #91a9c8;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        /* Հակառակ ուղղությամբ սլաք */
+        .arrow-button {
+            position: fixed;
+            top: 25px;
+            left: 25px;
+            width: 54px;
+            height: 54px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            background: linear-gradient(135deg, #087cff, #00c6ff);
+            color: white;
+            font-size: 30px;
+            text-decoration: none;
+            box-shadow: 0 5px 25px rgba(0, 166, 255, 0.3);
+            transition: 0.3s;
+        }
+
+        .arrow-button:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 0 30px rgba(0, 198, 255, 0.6);
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 90px 15px 25px;
+            }
+
+            .feedback {
+                padding: 25px 20px;
+                border-radius: 18px;
+            }
+
+            .arrow-button {
+                top: 18px;
+                left: 18px;
+                width: 46px;
+                height: 46px;
+                font-size: 26px;
+            }
+        }
     </style>
+</head>
+
 <body>
-    
-    <a href="html.html" class="arrow-button" title="Բացել HTML էջը">
+
+    <a href="index.html" class="arrow-button" title="Վերադառնալ գլխավոր էջ">
         ←
     </a>
 
-    <section class="feedback" id="feedback">
-        <h2>✉️ Կարծիքներ և առաջարկներ</h2>
-        <p>Գրիր քո կարծիքը մեր նախագծի մասին։</p>
+    <section class="feedback">
+        <div class="icon">✉️</div>
 
-        <form action="https://formspree.io/f/https://formspree.io/f/myeeyvon"
-              method="POST">
+        <h1>Կարծիքներ և առաջարկներ</h1>
+
+        <p class="description">
+            Քո կարծիքը կարևոր է մեզ համար։
+            Կիսվիր տպավորություններովդ և օգնիր մեզ
+            ավելի լավը դարձնել մեր նախագիծը։
+        </p>
+
+        <form action="https://formspree.io/f/myeeyvon" method="POST">
 
             <label for="name">Անուն</label>
-            <input type="text" id="name" name="name"
-                   placeholder="Գրիր անունդ" required>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Գրիր անունդ"
+                maxlength="100"
+                required
+            >
 
             <label for="email">Էլեկտրոնային փոստ (ըստ ցանկության)</label>
-            <input type="email" id="email" name="email"
-                   placeholder="example@gmail.com">
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="example@gmail.com"
+            >
 
             <label for="message">Քո կարծիքը</label>
-            <textarea id="message" name="message"
-                      placeholder="Գրիր քո կարծիքը..."
-                      rows="5" maxlength="3000" required></textarea>
+            <textarea
+                id="message"
+                name="message"
+                placeholder="Գրիր քո կարծիքը կամ առաջարկը..."
+                maxlength="3000"
+                required
+            ></textarea>
 
-            <button type="submit">Ուղարկել կարծիքը ➤</button>
+            <button type="submit">
+                Ուղարկել կարծիքը ➤
+            </button>
+
         </form>
+
+        <p class="note">
+            Շնորհակալություն մեր նախագծին ժամանակ տրամադրելու համար։
+        </p>
     </section>
+
 </body>
 </html>
-
-
-
-
-    
